@@ -28,11 +28,11 @@ public class WarehouseAmountReportService {
         List<WarehouseAmount> warehouseAmounts = warehouseAmountRepository.getWarehouseAmount(idWarehouse,idProduct,
                 idProductGroup1,idProductGroup2,idProductGroup3,idProductType);
 
-        return generateDTO(warehouseAmounts);
+        return generateReportDTO(warehouseAmounts);
     }
 
 
-    private List<CWarehouseAmountReportDTO> generateDTO(List<WarehouseAmount> warehouseAmounts){
+    private List<CWarehouseAmountReportDTO> generateReportDTO(List<WarehouseAmount> warehouseAmounts){
         List<CWarehouseAmountReportDTO> reportDTOs = new ArrayList<>();
 
         for (WarehouseAmount warehouseAmount : warehouseAmounts) {
