@@ -1,8 +1,6 @@
 package com.company.Warehouse.dto;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +15,6 @@ import java.math.BigDecimal;
 public class CWarehouseAmountReportDTO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProduct;
     private String productCode;
     private String productName;
