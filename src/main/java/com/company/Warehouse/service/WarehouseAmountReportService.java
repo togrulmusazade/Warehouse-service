@@ -12,7 +12,6 @@ import com.company.Warehouse.repository.ProductRepository;
 import com.company.Warehouse.repository.ProductTypeRepository;
 import com.company.Warehouse.repository.WarehouseAmountRepository;
 import com.company.Warehouse.repository.WarehouseRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
