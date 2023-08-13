@@ -1,13 +1,15 @@
 package com.company.Warehouse.controller;
 
 import com.company.Warehouse.dto.CWarehouseAmountReportDTO;
+import com.company.Warehouse.exception.ProductGroupNotFoundException;
+import com.company.Warehouse.exception.ProductNotFoundException;
+import com.company.Warehouse.exception.ProductTypeNotFoundException;
+import com.company.Warehouse.exception.WarehouseNotFoundException;
 import com.company.Warehouse.service.WarehouseAmountReportService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import static org.springframework.http.HttpStatus.*;
 import java.util.List;
 
@@ -32,6 +34,36 @@ public class WarehouseAmountReportController {
 
         return new ResponseEntity<>(report, OK);
     }
+
+
+
+
+
+
+
+    @ExceptionHandler(WarehouseNotFoundException.class)
+    public ResponseEntity<String> handleRegionAlreadyExistsException(WarehouseNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), NOT_FOUND);
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<String> handleRegionNotFoundException(ProductNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), NOT_FOUND);
+    }
+
+    @ExceptionHandler(ProductGroupNotFoundException.class)
+    public ResponseEntity<String> handleRegionNotFoundException(ProductGroupNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), NOT_FOUND);
+    }
+
+    @ExceptionHandler(ProductTypeNotFoundException.class)
+    public ResponseEntity<String> handleRegionNotFoundException(ProductTypeNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), NOT_FOUND);
+    }
+
+
+
+
 
 
 }

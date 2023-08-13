@@ -2,9 +2,12 @@ package com.company.Warehouse.service;
 
 import com.company.Warehouse.dto.CWarehouseAmountReportDTO;
 import com.company.Warehouse.entity.Product;
-import com.company.Warehouse.entity.ProductType;
 import com.company.Warehouse.entity.Warehouse;
 import com.company.Warehouse.entity.WarehouseAmount;
+import com.company.Warehouse.exception.ProductGroupNotFoundException;
+import com.company.Warehouse.exception.ProductNotFoundException;
+import com.company.Warehouse.exception.ProductTypeNotFoundException;
+import com.company.Warehouse.exception.WarehouseNotFoundException;
 import com.company.Warehouse.repository.ProductRepository;
 import com.company.Warehouse.repository.ProductTypeRepository;
 import com.company.Warehouse.repository.WarehouseAmountRepository;
@@ -73,27 +76,27 @@ public class WarehouseAmountReportService {
             Integer idProductType) {
 
         if (idWarehouse != null && !warehouseRepository.existsById(idWarehouse)) {
-            throw new EntityNotFoundException("This warehouse does not exist with id: " + idWarehouse);
+            throw new WarehouseNotFoundException("This warehouse does not exist with id: " + idWarehouse);
         }
 
         if (idProduct != null && !productRepository.existsById(idProduct)) {
-            throw new EntityNotFoundException("This product does not exist with id: " + idProduct);
+            throw new ProductNotFoundException("This product does not exist with id: " + idProduct);
         }
 
         if (idProductGroup1 != null && productRepository.findByIdProductgroup1(idProductGroup1) <= 0) {
-            throw new EntityNotFoundException("Product group 1 does not exist with id: " + idProductGroup1);
+            throw new ProductGroupNotFoundException("Product group 1 does not exist with id: " + idProductGroup1);
         }
 
         if (idProductGroup2 != null && productRepository.findByIdProductgroup2(idProductGroup2) <= 0) {
-            throw new EntityNotFoundException("Product group 2 does not exist with id: " + idProductGroup2);
+            throw new ProductGroupNotFoundException("Product group 2 does not exist with id: " + idProductGroup2);
         }
 
         if (idProductGroup3 != null && productRepository.findByIdProductgroup3(idProductGroup3) <= 0) {
-            throw new EntityNotFoundException("Product group 3 does not exist with id: " + idProductGroup3);
+            throw new ProductGroupNotFoundException("Product group 3 does not exist with id: " + idProductGroup3);
         }
 
         if (idProductType != null && !productTypeRepository.existsById(idProductType)) {
-            throw new EntityNotFoundException("This product type does not exist with id: " + idProductType);
+            throw new ProductTypeNotFoundException("This product type does not exist with id: " + idProductType);
         }
     }
 
